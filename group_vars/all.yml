@@ -1,0 +1,20 @@
+---
+users: []
+
+# From https://www.schedmd.com/downloads.php
+slurm_version: 17.11.8
+slurm_download_checksum: sha1:bee727437c9d13dc11ac21c54801b72bda38b330
+
+# Set this to something secure.
+slurm_accounting_db_password: 12345
+
+slurm_cluster_name: cluster
+slurm_control_machine: mgmt
+
+slurm_partitions:
+  - name: compute
+    nodelist: ALL
+    default: YES
+
+filesystem_target_address: fileserver
+filesystem_mount_point: /shared

@@ -1,0 +1,38 @@
+---
+- name: disable SELinux
+  selinux:
+    state: disabled
+
+- name: make base home directory
+  file:
+    path: /mnt{{ filesystem_mount_point }}/home
+    state: directory
+
+- name: add users to the management node
+  user:
+    name: "{{ item.name }}"
+    append: yes
+    shell: /bin/bash
+    home: /mnt{{ filesystem_mount_point }}/home/{{ item.name }}
+    generate_ssh_key: yes
+    uid: "{{ item.uid|default(omit) }}"
+  loop: '{{ users }}'
+  when: "'management' in group_names"
+
+- name: add users to the compute nodes
+  user:
+    name: "{{ item.name }}"
+    append: yes
+    shell: /bin/bash
+    home: /mnt{{ filesystem_mount_point }}/home/{{ item.name }}
+    create_home: no
+    uid: "{{ item.uid|default(omit) }}"
+  loop: '{{ users }}'
+  when: "'management' not in group_names"
+
+- name: set authorized SSH keys
+  authorized_key:
+    user: "{{ item.name }}"
+    state: present
+    key: "{{ item.key | default('') }}"
+  loop: "{{ users }}"

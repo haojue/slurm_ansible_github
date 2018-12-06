@@ -1,0 +1,13 @@
+---
+slurm_packages:
+  - slurmctld
+  - slurmdbd
+
+slurm_elastic:
+  oracle:
+    config_directory: /home/slurm/.oci/
+
+install_packages:
+  - xorg-x11-xauth
+
+monitoring_role: master
