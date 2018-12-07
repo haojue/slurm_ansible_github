@@ -2,6 +2,15 @@
 slurm_packages:
   - slurmctld
   - slurmdbd
+  - perlapi
+  - devel
+  - example-configs
+  - slurmd
+  - libpmi
+  - torque
+  - openlava
+  - contribs
+  - pam_slurm
 
 slurm_elastic:
   oracle:

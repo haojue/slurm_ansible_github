@@ -2,6 +2,16 @@
 slurm_packages:
   - slurmd
   - libpmi
+  - slurmctld
+  - slurmdbd
+  - perlapi
+  - devel
+  - example-configs
+  - torque
+  - openlava
+  - contribs
+  - pam_slurm
+
 
 install_packages:
   - mpich-devel
