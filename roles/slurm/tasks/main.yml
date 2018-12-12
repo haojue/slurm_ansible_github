@@ -123,8 +123,9 @@
   notify:
     - restart slurmd
     - restart slurmctld
+
 - name: change cluster name
-  shell: sh ../files/changesconf
+  shell: sh /home/opc/.ansible/pull/*/roles/slurm//files/changesconf
   notify:
     - restart slurmd
     - restart slurmctld
@@ -137,6 +138,12 @@
     group: slurm
     mode: 0644
   when: "'management' in group_names"
+  notify:
+    - restart slurmd
+    - restart slurmctld
+
+- name: change shared conf 
+  shell: sh /home/opc/.ansible/pull/*/roles/slurm/files/chgshared
   notify:
     - restart slurmd
     - restart slurmctld
