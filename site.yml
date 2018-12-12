@@ -2,6 +2,8 @@
 - name: finisher script
   hosts: management
   tasks:
+    - name: wait for sleep
+      shell: sleep 20
     - name: copy example users file
       copy:
         src: roles/finalise/files/users.yml.example
