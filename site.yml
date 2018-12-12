@@ -3,7 +3,6 @@
   hosts: management
   tasks:
     - name: copy example users file
-      shell: sleep 20 
       copy:
         src: roles/finalise/files/users.yml.example
         dest: /home/opc/users.yml.example
