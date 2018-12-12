@@ -1,0 +1,1 @@
+sudo echo \"ReturnToService=2\" >> /mnt/shared/apps/slurm/slurm.conf 
