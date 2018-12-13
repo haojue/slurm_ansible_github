@@ -125,7 +125,7 @@
     - restart slurmctld
 
 - name: change cluster name
-  shell: sh /home/opc/.ansible/pull/*/roles/slurm//files/changesconf
+  shell: sh /home/opc/.ansible/pull/*/roles/slurm//files/changesconf {{ slurm_cluster_name }} 
   notify:
     - restart slurmd
     - restart slurmctld
