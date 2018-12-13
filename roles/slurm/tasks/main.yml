@@ -136,8 +136,19 @@
     mode: 0644
   when: "'management' in group_names"
 
+- name: echo sharedconf 
+  command: cat /mnt/shared/apps/slurm/slurm.conf
+  register: sharedconf_output 
+
 - name: change shared conf 
   shell: sh /home/opc/.ansible/pull/*/roles/slurm/files/chgshared
+  when: sharedconf_output.stdout | match("ReturnToService=2")
+  notify:
+    - restart slurmd
+    - restart slurmctld
+
+- name: restart again 
+  shell: sleep 1
   notify:
     - restart slurmd
     - restart slurmctld
