@@ -1,1 +1,3 @@
 sudo sed -i "s/ClusterName=.*/ClusterName=$1/g" /etc/slurm/slurm.conf
+sudo echo $1 > /home/opc/clustername
+sudo echo test >> /home/opc/clustername
