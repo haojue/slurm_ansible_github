@@ -142,7 +142,7 @@
 
 - name: change shared conf 
   shell: sh /home/opc/.ansible/pull/*/roles/slurm/files/chgshared
-  when: sharedconf_output.stdout | match("ReturnToService=2")
+  when: sharedconf_output.stdout | match(!"ReturnToService=2")
   notify:
     - restart slurmd
     - restart slurmctld
