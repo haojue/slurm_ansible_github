@@ -1,1 +1,1 @@
-sudo sed -i 's/slurm_cluster_name: cluster/slurm_cluster_name: {{slurm_cluster_name}}/g' /etc/slurm/slurm.conf
+sudo sed -i "s/ClusterName=.*/ClusterName=$1/g" /etc/slurm/slurm.conf
