@@ -147,12 +147,6 @@
     - restart slurmd
     - restart slurmctld
 
-- name: restart again 
-  shell: sleep 1
-  notify:
-    - restart slurmd
-    - restart slurmctld
-
 - name: slurmdbd config file
   template:
     src: slurmdbd.conf.j2
